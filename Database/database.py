@@ -1,6 +1,7 @@
 #Dependancies
-from bs4 import BeautifulSoup
 import requests
+from bs4 import BeautifulSoup
+
 import json
 
 
@@ -51,19 +52,19 @@ def getHTML(url):
 def getURL(input1):
 	try:
 		if input1[0] == 't' and input1[1] == 't':
-			html = getHTML('http://www.imdb.com/title/'+input1+'/')
+			html = getHTML('https://www.imdb.com/title/'+input1+'/')
 
 		else:
 			html = getHTML('https://www.google.co.in/search?q='+input1)
 			for cite in html.findAll('cite'):
 				if 'imdb.com/title/tt' in cite.text:
-					html = getHTML('http://'+cite.text)
+					html = getHTML('https://'+cite.text)
 					break
 		return getJSON(html)
 	except Exception as e:
 		return 'Invalid input or Network Error!'
 
 
-input1 = raw_input("Enter IMDB ID or Title: ")
+input1 = input("Enter IMDB ID or Title: ")
 print('Getting information, Please Wait....')
 print(getURL(input1))
