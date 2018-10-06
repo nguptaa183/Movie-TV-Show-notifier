@@ -36,9 +36,12 @@ elif int(show_year) < current_year:
 elif int(show_year) == current_year:
     imdb_episode_url=imdb_url + "episodes?year=" + show_year
     imdb_episode_page = getHTML(imdb_episode_url)
-    show_date = imdb_episode_page.find(attrs={'class': 'airdate'})
+    show_date2 = imdb_episode_page.find(attrs={'id': 'nextEpisode'}).find('span')
+    show_date2 = imdb_episode_page.find(attrs={'class': 'airdate'})
     air_date=None
-    for date in show_date:
+    if show_date2:
+        print(show_date2)
+
         
 
         # print("The next episode airs on ")
