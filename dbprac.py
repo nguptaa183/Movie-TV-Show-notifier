@@ -35,8 +35,12 @@ elif int(show_year) < current_year:
     print("The show has finished streaming all its episodes.")
 elif int(show_year) == current_year:
     imdb_episode_url=imdb_url + "episodes?year=" + show_year
-    imdb_page = getHTML(imdb_episode_url)
-    show_date = imdb_page.find(attrs={'class': 'seasons-and-year-nav'}).find_all('a')
-    print("The next episode airs on ")
+    imdb_episode_page = getHTML(imdb_episode_url)
+    show_date = imdb_episode_page.find(attrs={'class': 'airdate'})
+    air_date=None
+    for date in show_date:
+        
+
+        # print("The next episode airs on ")
 
 
