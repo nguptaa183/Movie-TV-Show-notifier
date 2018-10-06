@@ -29,11 +29,11 @@ for year in show_date_year:
         break
 
 #---------DISPLAYING STATUS OF SHOW---------#
-if int(show_year) > current_year:
-    print("The next season begins in " + show_year + ".")
-elif int(show_year) < current_year:
+# if int(show_year) > current_year:
+#     print("The next season begins in " + show_year + ".")
+if int(show_year) < current_year:
     print("The show has finished streaming all its episodes.")
-elif int(show_year) == current_year:
+else:
     imdb_episode_url=imdb_url + "episodes?year=" + show_year
     imdb_episode_page = getHTML(imdb_episode_url)
     show_date2 = imdb_episode_page.find(attrs={'id': 'nextEpisode'}).find('span')
