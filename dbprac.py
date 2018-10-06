@@ -1,5 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
+import datetime
+
+#---------CURRENT YEAR---------#
+now = datetime.datetime.now()
+current_year=now.year
 
 #---------FUNCTION TO GET HTML FROM URL---------#
 def getHTML(url):
@@ -8,13 +13,30 @@ def getHTML(url):
 
 #---------GETTING IMDB LINK OF TV SHOW FROM GOOGLE---------#
 tv_show = input("Enter tv show: ")
-page = getHTML("https://www.google.co.in/search?q=" + tv_show)
+google_page = getHTML("https://www.google.co.in/search?q=" + tv_show)
 imdb_url=None
-for websites in page.findAll('cite'):
+for websites in google_page.findAll('cite'):
     if 'https://www.imdb.com/title/' in websites.text:
         imdb_url=websites.text
-print(imdb_url)
 
-#---------GETTING IMDB LINK OF TV SHOW FROM GOOGLE---------#
-# data['poster'] = html.find(attrs={'class': 'poster'}).find('img')['src']
+#---------GETTING TV SHOW RELEASE DATE IMDB---------#
+imdb_page = getHTML(imdb_url)
+show_date_year = imdb_page.find(attrs={'class': 'seasons-and-year-nav'}).find_all('a')
+show_year=None
+for year in show_date_year:
+    if len(year.text)==4:
+        show_year=year.text
+        break
+
+#---------DISPLAYING STATUS OF SHOW---------#
+if int(show_year) > current_year:
+    print("The next season begins in " + show_year + ".")
+elif int(show_year) < current_year:
+    print("The show has finished streaming all its episodes.")
+elif int(show_year) == current_year:
+    imdb_episode_url=imdb_url + "episodes?year=" + show_year
+    imdb_page = getHTML(imdb_episode_url)
+    show_date = imdb_page.find(attrs={'class': 'seasons-and-year-nav'}).find_all('a')
+    print("The next episode airs on ")
+
 
