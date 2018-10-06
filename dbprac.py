@@ -10,8 +10,6 @@ now = datetime.datetime.now()
 current_year = now.year
 
 #---------FUNCTION TO GET HTML FROM URL---------#
-
-
 def getHTML(url):
 	response = requests.get(url)
 	return BeautifulSoup(response.content, 'lxml')
