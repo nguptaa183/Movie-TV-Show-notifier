@@ -80,7 +80,7 @@ try:
 
 
 except Exception as e:
-    print("\nERROR RETRIEVING DATA FROM IMDB\n")
+    print("\n      ERROR RETRIEVING DATA FROM IMDB\n")
     print(" ------------------------------------------------")
     print("|              POSSIBLE REASONS:                 |")
     print("| --> NO INTERNET CONNECTION                     |")
