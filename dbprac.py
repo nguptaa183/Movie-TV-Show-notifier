@@ -34,8 +34,6 @@ for year in show_date_year:
         show_years.append(year) 
 show_year = show_years[0]
 show_last_year=show_years[1]
-print(show_year)
-print(show_last_year)
 
 #---------DISPLAYING STATUS OF SHOW---------#
 
@@ -53,7 +51,6 @@ elif (int(show_year) > current_year) and (int(show_year)-1 == int(show_last_year
         if len(ad)!=4:
             airdate.append(ad)
     show_date=airdate[-1]
-    print(show_date)
     if '.' in show_date:
         show_date = show_date.text.strip().replace('.', '')
     else:
@@ -67,8 +64,17 @@ elif (int(show_year) > current_year) and (int(show_year)-1 == int(show_last_year
 elif int(show_year) == current_year:
     imdb_episode_url = "https://www.imdb.com/title/" + show_id + "episodes?year=" + show_year
     imdb_episode_page = getHTML(imdb_episode_url)
-    show_date = imdb_episode_page.findAll(class_='airdate')[-1]
-    show_date = show_date.text.strip().replace('.', '')
+    airdate = []
+    show_date = imdb_episode_page.findAll(class_='airdate')
+    for ad in show_date:
+        ad = ad.text.strip()
+        if len(ad) != 4:
+            airdate.append(ad)
+    show_date = airdate[-1]
+    if '.' in show_date:
+        show_date = show_date.text.strip().replace('.', '')
+    else:
+        show_date = show_date.text.strip()
     show_date = datetime.strptime(show_date, '%d %b %Y').date()
     if show_date <= now.date():
         print('The show has finished streaming all its episodes of this year' + '(' + str(current_year) + ').')
