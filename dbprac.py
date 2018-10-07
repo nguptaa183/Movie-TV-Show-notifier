@@ -85,7 +85,7 @@ try:
                     '(' + str(current_year) + ').')
             elif show_date > now.date():
                 print('The next episode airs on ' + str(show_date) + '.')
-    
+
     else:
         print("Movie Entered xD")
         imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
@@ -95,12 +95,21 @@ try:
             if x == '(':
                 break
             movie_date.append(x)
-        movie_date=''.join(movie_date)
-        print(movie_date)
-        movie_date = datetime.strptime(str(movie_date), '%d %B %Y')
-        print(movie_date)
+        movie_date=''.join(movie_date).strip()
+        movie_date = datetime.strptime(movie_date, '%d %B %Y').date()
+        if movie_date < now.date():
+            print("The movie was realeased on " + str(movie_date) + ".")
+        elif movie_date >= now.date():
+            print("The movie will realease on " + str(movie_date) + ".")
 
-        
 
+#---------EXCEPTION---------#
 except Exception as e:
-    print("ERROR")
+    print("\n        ERROR RETRIEVING DATA FROM IMDB\n")
+    print(" ------------------------------------------------")
+    print("|              POSSIBLE REASONS:                 |")
+    print("| --> NO INTERNET CONNECTION                     |")
+    print("| --> ENTERED TV SHOW DOESNOT EXIST              |")
+    print("| --> BAD RESPONSE FROM IMDB WHILE SCRAPING DATA |")
+    print("| --> ABSENCE OF DATA AT THE MOMENT              |")
+    print(" ------------------------------------------------")
