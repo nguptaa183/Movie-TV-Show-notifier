@@ -27,8 +27,9 @@ try:
 
     #---------CHECKING WEATHER IT IS MOVIE OR TVSHOW---------#
     imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
-    show_date_year = imdb_page.find('div', class_='subtext').findAll('a')[-1]
-    if 'TV Series' in show_date_year.text.strip():
+    movie_show_date_year = imdb_page.find('div', class_='subtext').findAll('a')[-1]
+    if 'TV Series' in movie_show_date_year.text.strip():
+        print("TV Show Entered xD\n")
         #---------GETTING TV SHOW RELEASE DATE IMDB---------#
         imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
         show_date_year = imdb_page.find(
@@ -86,6 +87,19 @@ try:
                 print('The next episode airs on ' + str(show_date) + '.')
     
     else:
+        print("Movie Entered xD")
+        imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
+        moviedate = imdb_page.find('div', class_='subtext').findAll('a')[-1]
+        movie_date=[]
+        for x in moviedate.text.strip():
+            if x == '(':
+                break
+            movie_date.append(x)
+        movie_date=''.join(movie_date)
+        print(movie_date)
+        movie_date = datetime.strptime(str(movie_date), '%d %B %Y')
+        print(movie_date)
+
         
 
 except Exception as e:
