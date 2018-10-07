@@ -1,8 +1,6 @@
 import requests
-from bs4 import BeautifulSoup, Comment
+from bs4 import BeautifulSoup
 from datetime import datetime
-import calendar
-# import arrow
 
 #---------USER INPUT---------#
 tv_show = input("Enter tv show: ").replace(' ', '_')
