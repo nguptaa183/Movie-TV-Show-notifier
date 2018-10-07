@@ -1,12 +1,14 @@
 import requests
 from bs4 import BeautifulSoup, Comment
-import datetime
+from datetime import datetime
+import calendar
+# import arrow
 
 #---------USER INPUT---------#
 tv_show = input("Enter tv show: ").replace(' ', '_')
 
 #---------CURRENT YEAR---------#
-now = datetime.datetime.now()
+now = datetime.now()
 current_year = now.year
 
 #---------FUNCTION TO GET HTML FROM URL---------#
@@ -36,7 +38,14 @@ if int(show_year) < current_year:
         print("The show has finished streaming all its episodes.")
 elif int(show_year) == current_year:
     imdb_episode_url = "https://www.imdb.com/title/" + show_id + "episodes?year=" + show_year
-    print(imdb_episode_url)
     imdb_episode_page = getHTML(imdb_episode_url)
     show_date = imdb_episode_page.findAll(class_='airdate')[-1]
-    print(show_date.text)
+    show_date = str(show_date.text.strip().replace('.',''))
+    show_date = datetime.strptime(show_date, '%d %b %Y').strftime('%Y-%m-%d')
+    print(show_date)
+    print(now)
+    if show_date < now:
+        print("The show has finished streaming all its episodes this year.")
+
+    # print(show_date[3:6])
+    # print(abbr_to_num[show_date[3:5]])
