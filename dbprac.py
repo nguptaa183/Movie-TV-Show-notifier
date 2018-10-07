@@ -29,7 +29,7 @@ try:
     imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
     movie_show_date_year = imdb_page.find('div', class_='subtext').findAll('a')[-1]
     if 'TV Series' in movie_show_date_year.text.strip():
-        print("TV Show Entered xD\n")
+        print("TV Show Entered xD")
         #---------GETTING TV SHOW RELEASE DATE IMDB---------#
         imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
         show_date_year = imdb_page.find(
