@@ -4,14 +4,17 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 #---------USER INPUT---------#
-tv_show = input("Enter tv show: ").replace(' ', '_')
+movie = input("Enter Movie Name: ").replace(' ', '_')
+tv_show = input("Enter TV Show: ").replace(' ', '_')
 
-#---------CURRENT YEAR---------#
-now = datetime.now()
-current_year = now.year
+
 
 #---------EXCEPTION HANDLING---------#
 try:
+    #---------CURRENT YEAR---------#
+    now = datetime.now()
+    current_year = now.year
+
     #---------FUNCTION TO GET HTML FROM URL---------#
     def getHTML(url):
         response = requests.get(url)
@@ -26,8 +29,7 @@ try:
 
     #---------GETTING TV SHOW RELEASE DATE IMDB---------#
     imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
-    show_date_year = imdb_page.find(
-        class_='seasons-and-year-nav').find_all('a')
+    show_date_year = imdb_page.find(class_='seasons-and-year-nav').find_all('a')
     show_years = []
     for year in show_date_year:
         year = year.text.strip()
@@ -42,8 +44,7 @@ try:
     elif (int(show_year) > current_year) and (int(show_year)-1 != int(show_last_year)):
         print("The next season begins in " + show_year + ".")
     elif (int(show_year) > current_year) and (int(show_year)-1 == int(show_last_year)):
-        imdb_episode_url = "https://www.imdb.com/title/" + \
-            show_id + "episodes?year=" + show_last_year
+        imdb_episode_url = "https://www.imdb.com/title/" + show_id + "episodes?year=" + show_last_year
         imdb_episode_page = getHTML(imdb_episode_url)
         airdate = []
         show_date = imdb_episode_page.findAll(class_='airdate')
@@ -61,8 +62,7 @@ try:
             print('The next episode airs on ' + str(show_date) + '.')
 
     elif int(show_year) == current_year:
-        imdb_episode_url = "https://www.imdb.com/title/" + \
-            show_id + "episodes?year=" + show_year
+        imdb_episode_url = "https://www.imdb.com/title/" + show_id + "episodes?year=" + show_year
         imdb_episode_page = getHTML(imdb_episode_url)
         airdate = []
         show_date = imdb_episode_page.findAll(class_='airdate')
