@@ -7,7 +7,6 @@ from datetime import datetime
 movie_or_tv_show = input("Enter Movie or TV Show: ").replace(' ', '_')
 
 
-
 #---------EXCEPTION HANDLING---------#
 try:
     #---------CURRENT YEAR---------#
@@ -28,60 +27,82 @@ try:
 
     #---------CHECKING WEATHER IT IS MOVIE OR TVSHOW---------#
     imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
-    show_date_year = imdb_page.find(class_='subtext').find_all('a')
-    
+    movie_show_date_year = imdb_page.find(
+        'div', class_='subtext').findAll('a')[-1]
+    if 'TV Series' in movie_show_date_year.text.strip():
+        print("TV Show Entered xD")
+        #---------GETTING TV SHOW RELEASE DATE IMDB---------#
+        imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
+        show_date_year = imdb_page.find(
+            class_='seasons-and-year-nav').find_all('a')
+        show_years = []
+        for year in show_date_year:
+            year = year.text.strip()
+            if len(year) == 4:
+                show_years.append(year)
+        show_year = show_years[0]
+        show_last_year = show_years[1]
 
-    #---------GETTING TV SHOW RELEASE DATE IMDB---------#
-    imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
-    show_date_year = imdb_page.find(class_='seasons-and-year-nav').find_all('a')
-    show_years = []
-    for year in show_date_year:
-        year = year.text.strip()
-        if len(year) == 4:
-            show_years.append(year)
-    show_year = show_years[0]
-    show_last_year = show_years[1]
-
-    #---------DISPLAYING STATUS OF SHOW---------#
-    if int(show_year) < current_year:
-        print("The show has finished streaming all its episodes.")
-    elif (int(show_year) > current_year) and (int(show_year)-1 != int(show_last_year)):
-        print("The next season begins in " + show_year + ".")
-    elif (int(show_year) > current_year) and (int(show_year)-1 == int(show_last_year)):
-        imdb_episode_url = "https://www.imdb.com/title/" + show_id + "episodes?year=" + show_last_year
-        imdb_episode_page = getHTML(imdb_episode_url)
-        airdate = []
-        show_date = imdb_episode_page.findAll(class_='airdate')
-        for ad in show_date:
-            ad = ad.text.strip()
-            if len(ad) != 4:
-                airdate.append(ad)
-        show_date = airdate[-1]
-        if '.' in show_date:
-            show_date = show_date.replace('.', '')
-        show_date = datetime.strptime(show_date, '%d %b %Y').date()
-        if show_date <= now.date():
+        #---------DISPLAYING STATUS OF SHOW---------#
+        if int(show_year) < current_year:
+            print("The show has finished streaming all its episodes.")
+        elif (int(show_year) > current_year) and (int(show_year)-1 != int(show_last_year)):
             print("The next season begins in " + show_year + ".")
-        elif show_date > now.date():
-            print('The next episode airs on ' + str(show_date) + '.')
+        elif (int(show_year) > current_year) and (int(show_year)-1 == int(show_last_year)):
+            imdb_episode_url = "https://www.imdb.com/title/" + \
+                show_id + "episodes?year=" + show_last_year
+            imdb_episode_page = getHTML(imdb_episode_url)
+            airdate = []
+            show_date = imdb_episode_page.findAll(class_='airdate')
+            for ad in show_date:
+                ad = ad.text.strip()
+                if len(ad) != 4:
+                    airdate.append(ad)
+            show_date = airdate[-1]
+            if '.' in show_date:
+                show_date = show_date.replace('.', '')
+            show_date = datetime.strptime(show_date, '%d %b %Y').date()
+            if show_date <= now.date():
+                print("The next season begins in " + show_year + ".")
+            elif show_date > now.date():
+                print('The next episode airs on ' + str(show_date) + '.')
 
-    elif int(show_year) == current_year:
-        imdb_episode_url = "https://www.imdb.com/title/" + show_id + "episodes?year=" + show_year
-        imdb_episode_page = getHTML(imdb_episode_url)
-        airdate = []
-        show_date = imdb_episode_page.findAll(class_='airdate')
-        for ad in show_date:
-            ad = ad.text.strip()
-            if len(ad) != 4:
-                airdate.append(ad)
-        show_date = airdate[-1]
-        if '.' in show_date:
-            show_date = show_date.replace('.', '')
-        show_date = datetime.strptime(show_date, '%d %b %Y').date()
-        if show_date <= now.date():
-            print('The show has finished streaming all its episodes of this year' + '(' + str(current_year) + ').')
-        elif show_date > now.date():
-            print('The next episode airs on ' + str(show_date) + '.')
+        elif int(show_year) == current_year:
+            imdb_episode_url = "https://www.imdb.com/title/" + \
+                show_id + "episodes?year=" + show_year
+            imdb_episode_page = getHTML(imdb_episode_url)
+            airdate = []
+            show_date = imdb_episode_page.findAll(class_='airdate')
+            for ad in show_date:
+                ad = ad.text.strip()
+                if len(ad) != 4:
+                    airdate.append(ad)
+            show_date = airdate[-1]
+            if '.' in show_date:
+                show_date = show_date.replace('.', '')
+            show_date = datetime.strptime(show_date, '%d %b %Y').date()
+            if show_date <= now.date():
+                print('The show has finished streaming all its episodes of this year' +
+                      '(' + str(current_year) + ').')
+            elif show_date > now.date():
+                print('The next episode airs on ' + str(show_date) + '.')
+
+    else:
+        print("Movie Entered xD")
+        imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
+        moviedate = imdb_page.find('div', class_='subtext').findAll('a')[-1]
+        movie_date = []
+        for x in moviedate.text.strip():
+            if x == '(':
+                break
+            movie_date.append(x)
+        movie_date = ''.join(movie_date).strip()
+        movie_date = datetime.strptime(movie_date, '%d %B %Y').date()
+        if movie_date < now.date():
+            print("The movie was realeased on " + str(movie_date) + ".")
+        elif movie_date >= now.date():
+            print("The movie will realease on " + str(movie_date) + ".")
+
 
 #---------EXCEPTION---------#
 except Exception as e:
