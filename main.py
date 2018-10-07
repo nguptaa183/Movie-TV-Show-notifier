@@ -75,8 +75,7 @@ try:
             show_date = show_date.replace('.', '')
         show_date = datetime.strptime(show_date, '%d %b %Y').date()
         if show_date <= now.date():
-            print('The show has finished streaming all its episodes of this year' +
-                  '(' + str(current_year) + ').')
+            print('The show has finished streaming all its episodes of this year' + '(' + str(current_year) + ').')
         elif show_date > now.date():
             print('The next episode airs on ' + str(show_date) + '.')
 
