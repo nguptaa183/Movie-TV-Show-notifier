@@ -4,8 +4,7 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 
 #---------USER INPUT---------#
-movie = input("Enter Movie Name: ").replace(' ', '_')
-tv_show = input("Enter TV Show: ").replace(' ', '_')
+movie_or_tv_show = input("Enter Movie or TV Show: ").replace(' ', '_')
 
 
 
@@ -21,11 +20,16 @@ try:
         return BeautifulSoup(response.content, 'lxml')
 
     #---------GETTING TITLE ID OF TV SHOW FROM IMDB SEARCH---------#
-    imdb_home_page = getHTML("https://www.imdb.com/find?" + tv_show)
+    imdb_home_page = getHTML("https://www.imdb.com/find?" + movie_or_tv_show)
     find_show_id = imdb_home_page.findAll('td', class_='result_text')[0]
     fetch_anchor_tag = find_show_id.find('a')
     fetch_link = fetch_anchor_tag['href']
     show_id = fetch_link[7:17]
+
+    #---------CHECKING WEATHER IT IS MOVIE OR TVSHOW---------#
+    imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
+    show_date_year = imdb_page.find(class_='subtext').find_all('a')
+    
 
     #---------GETTING TV SHOW RELEASE DATE IMDB---------#
     imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
