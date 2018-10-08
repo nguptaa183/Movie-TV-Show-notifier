@@ -89,19 +89,36 @@ try:
 
     else:
         print("Movie Entered xD")
-        imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
-        moviedate = imdb_page.find('div', class_='subtext').findAll('a')[-1]
-        movie_date = []
-        for x in moviedate.text.strip():
-            if x == '(':
-                break
-            movie_date.append(x)
-        movie_date = ''.join(movie_date).strip()
-        movie_date = datetime.strptime(movie_date, '%d %B %Y').date()
-        if movie_date < now.date():
-            print("The movie was realeased on " + str(movie_date) + ".")
-        elif movie_date >= now.date():
-            print("The movie will realease on " + str(movie_date) + ".")
+        imdb_page = getHTML("https://www.imdb.com/title/" +
+                            show_id + "releaseinfo/")
+        movie_country = imdb_page.find('table', class_='subpage_data').findAll('a')
+        movie_date = imdb_page.find('table', class_='subpage_data').findAll('td', class_='release_date')
+        country_list=[release_date.text.strip() for release_date in movie_country]
+        movie_date_list = [release_date.text.strip()for release_date in movie_country]
+        # for release_date in moviedate:
+        #     release_date=release_date.text.strip()
+        #     if "India" or 'IN' in release_date:
+        #         country_list.append(release_date)
+            # if "India" or 'IN' in release_date:
+            #     print(release_date)
+            # elif "USA" in release_date:
+            #     print(moviedate.index('USA'))
+            # elif "UK" in release_date:
+            #     print(release_date)
+        print(country_list)
+        # print(moviedate.text)
+        # movie_date = []
+        # for x in moviedate.text.strip():
+        #     if x == '(':
+        #         break
+        #     movie_date.append(x)
+        # movie_date = ''.join(movie_date).strip()
+        # print(movie_date)
+        # movie_date = datetime.strptime(movie_date, '%d %B %Y').date()
+        # if movie_date < now.date():
+        #     print("The movie was realeased on " + str(movie_date) + ".")
+        # elif movie_date >= now.date():
+        #     print("The movie will realease on " + str(movie_date) + ".")
 
 
 #---------EXCEPTION---------#
