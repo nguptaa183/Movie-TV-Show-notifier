@@ -110,29 +110,11 @@ try:
         if len(final_date) == 0:
             final_date.append(country_list[0])
             final_date.append(release_date_list[0])
-        print(final_date)
         movie_date = datetime.strptime(final_date[1], '%d %B %Y').date()
         if movie_date < now.date():
-            print("The movie was realeased in " + final_date[0] + "on " + str(movie_date) + ".")
+            print("The movie was realeased in " + final_date[0] + " on " + final_date[1] + ".")
         elif movie_date >= now.date():
-            print("The movie will realease in " + final_date[0] + "on " + str(movie_date) + ".")
-
-        # print(movie_date)
-        # print(country_list)
-        # print(release_date_list)
-        # print(moviedate.text)
-        # movie_date = []
-        # for x in moviedate.text.strip():
-        #     if x == '(':
-        #         break
-        #     movie_date.append(x)
-        # movie_date = ''.join(movie_date).strip()
-        # print(movie_date)
-        # movie_date = datetime.strptime(movie_date, '%d %B %Y').date()
-        # if movie_date < now.date():
-        #     print("The movie was realeased on " + str(movie_date) + ".")
-        # elif movie_date >= now.date():
-        #     print("The movie will realease on " + str(movie_date) + ".")
+            print("The movie will realease in " + final_date[0] + " on " + final_date[1] + ".")
 
 
 #---------EXCEPTION---------#
