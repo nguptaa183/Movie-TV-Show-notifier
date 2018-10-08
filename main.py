@@ -92,9 +92,9 @@ try:
         imdb_page = getHTML("https://www.imdb.com/title/" +
                             show_id + "releaseinfo/")
         movie_country = imdb_page.find('table', class_='subpage_data').findAll('a')
-        movie_date = imdb_page.find('table', class_='subpage_data').findAll('td', class_='release_date')
+        movie_date = imdb_page.find('table', class_='subpage_data').findaAll('tr').findAll('td', class_='release_date')
         country_list=[countrylist.text.strip() for countrylist in movie_country]
-        release_date_list = [releasedate.text.strip()for releasedate in movie_country]
+        release_date_list = [releasedate.text.strip()for releasedate in country_list]
         # for release_date in moviedate:
         #     release_date=release_date.text.strip()
         #     if "India" or 'IN' in release_date:
