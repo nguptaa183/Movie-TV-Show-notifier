@@ -21,7 +21,7 @@ def dates(movie_or_tv_show):
         #---------GETTING TITLE ID OF TV SHOW FROM IMDB SEARCH---------#
         imdb_home_page = getHTML("https://www.imdb.com/find?" + movie_or_tv_show)
         find_show_id = imdb_home_page.findAll('td', class_='result_text')[0]
-        fetch_anchor_tag = find_show_id.find('a')
+        fetch_anchor_tag = find_show_id.find('a')  #--- movie_or_tv_show_name---#
         fetch_link = fetch_anchor_tag['href']
         show_id = fetch_link[7:17]
 
@@ -30,7 +30,7 @@ def dates(movie_or_tv_show):
         movie_show_date_year = imdb_page.find(
             'div', class_='subtext').findAll('a')[-1]
         if 'TV Series' in movie_show_date_year.text.strip():
-            print("TV series name: " + movie_or_tv_show)
+            print("TV series name: " + fetch_anchor_tag.text.strip())
             #---------GETTING TV SHOW RELEASE DATE FROM IMDB---------#
             imdb_page = getHTML("https://www.imdb.com/title/" + show_id)
             show_date_year = imdb_page.find(
@@ -89,7 +89,7 @@ def dates(movie_or_tv_show):
                     print("Status: The next episode airs on " + str(show_date) + ".\n")
 
         else:
-            print("Movie name: " + movie_or_tv_show)
+            print("Movie name: " + fetch_anchor_tag.text.strip())
             #---------GETTING MOVIE RELEASE DATE FROM IMDB---------#
             imdb_page = getHTML("https://www.imdb.com/title/" +
                                 show_id + "releaseinfo/")
