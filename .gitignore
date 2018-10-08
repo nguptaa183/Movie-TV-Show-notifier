@@ -1,3 +1,3 @@
-# Don't track content of these folders
+# Don't track content of these folders and extensions
 __pycache__/
 *.pyc
