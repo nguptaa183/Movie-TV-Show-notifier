@@ -1,4 +1,4 @@
 # Don't track content of these folders
-_pycache_/
+MovieBot/_pycache_/
 
 *.pyc
