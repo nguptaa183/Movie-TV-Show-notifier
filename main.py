@@ -6,7 +6,6 @@ from datetime import datetime
 #---------USER INPUT---------#
 movie_or_tv_show = input("Enter Movie or TV Show: ").replace(' ', '_')
 
-
 #---------EXCEPTION HANDLING---------#
 try:
     #---------CURRENT YEAR---------#
