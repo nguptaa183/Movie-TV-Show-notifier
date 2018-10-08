@@ -100,13 +100,12 @@ try:
         release_date_list = [releasedate.text.strip()
                              for releasedate in movie_release_date]
         final_date = []
-        # for country in country_list:
         if "India" in country_list:
             x = country_list.index("India")
             y = release_date_list[x]
             final_date.append("India")
             final_date.append(y)
-        
+
         if len(final_date) == 0:
             if "IN" in country_list:
                 x = country_list.index("IN")
@@ -120,10 +119,11 @@ try:
                 y = release_date_list[x]
                 final_date.append('USA')
                 final_date.append(y)
-                
+
         if len(final_date) == 0:
             final_date.append(country_list[0])
             final_date.append(release_date_list[0])
+
         movie_date = datetime.strptime(final_date[1], '%d %B %Y').date()
         if movie_date < now.date():
             print("The movie was realeased on " + final_date[1] + ".")
