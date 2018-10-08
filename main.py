@@ -1,4 +1,4 @@
-import dates
+from Modules import dates
 
 #---------USER INPUT---------#
 # movie_or_tv_show = input("Enter Movie or TV Show: ").replace(' ', '_')
