@@ -91,15 +91,19 @@ try:
         print("Movie Entered xD")
         imdb_page = getHTML("https://www.imdb.com/title/" +
                             show_id + "releaseinfo/")
-        movie_country = imdb_page.find('table', class_='subpage_data').findAll('a')
-        movie_release_date = imdb_page.find('table', class_='subpage_data').findAll(class_='release_date')
-        country_list=[countrylist.text.strip() for countrylist in movie_country]
-        release_date_list = [releasedate.text.strip()for releasedate in movie_release_date]
-        final_date=[]
+        movie_country = imdb_page.find(
+            'table', class_='subpage_data').findAll('a')
+        movie_release_date = imdb_page.find(
+            'table', class_='subpage_data').findAll(class_='release_date')
+        country_list = [countrylist.text.strip()
+                        for countrylist in movie_country]
+        release_date_list = [releasedate.text.strip()
+                             for releasedate in movie_release_date]
+        final_date = []
         for country in country_list:
             if country == "India" or country == "IN":
-                x=country_list.index(country)
-                y=release_date_list[x]
+                x = country_list.index(country)
+                y = release_date_list[x]
                 final_date.append(country)
                 final_date.append(y)
             elif country == "USA":
