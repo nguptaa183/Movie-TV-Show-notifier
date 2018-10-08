@@ -93,8 +93,8 @@ try:
                             show_id + "releaseinfo/")
         movie_country = imdb_page.find('table', class_='subpage_data').findAll('a')
         movie_date = imdb_page.find('table', class_='subpage_data').findAll('td', class_='release_date')
-        country_list=[release_date.text.strip() for release_date in movie_country]
-        movie_date_list = [release_date.text.strip()for release_date in movie_country]
+        country_list=[countrylist.text.strip() for countrylist in movie_country]
+        release_date_list = [releasedate.text.strip()for releasedate in movie_country]
         # for release_date in moviedate:
         #     release_date=release_date.text.strip()
         #     if "India" or 'IN' in release_date:
@@ -106,6 +106,7 @@ try:
             # elif "UK" in release_date:
             #     print(release_date)
         print(country_list)
+        print(release_date_list)
         # print(moviedate.text)
         # movie_date = []
         # for x in moviedate.text.strip():
