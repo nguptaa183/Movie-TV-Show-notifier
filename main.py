@@ -92,36 +92,34 @@ try:
         imdb_page = getHTML("https://www.imdb.com/title/" +
                             show_id + "releaseinfo/")
         movie_country = imdb_page.find('table', class_='subpage_data').findAll('a')
-        movie_date = imdb_page.find('table', class_='subpage_data').findAll(class_='release_date')
+        movie_release_date = imdb_page.find('table', class_='subpage_data').findAll(class_='release_date')
         country_list=[countrylist.text.strip() for countrylist in movie_country]
-        release_date_list = [releasedate.text.strip()for releasedate in movie_date]
-        # for release_date in moviedate:
-        #     release_date=release_date.text.strip()
-        #     if "India" or 'IN' in release_date:
-        #         country_list.append(release_date)
-            # if "India" or 'IN' in release_date:
-            #     print(release_date)
-            # elif "USA" in release_date:
-            #     print(moviedate.index('USA'))
-            # elif "UK" in release_date:
-            #     print(release_date)
+        release_date_list = [releasedate.text.strip()for releasedate in movie_release_date]
         final_date=[]
         for country in country_list:
-            if country="India" or country="IN":
+            if country == "India" or country == "IN":
                 x=country_list.index(country)
                 y=release_date_list[x]
                 final_date.append(country)
                 final_date.append(y)
-            elif country = "USA":
+            elif country == "USA":
                 x = country_list.index(country)
                 y = release_date_list[x]
                 final_date.append(country)
                 final_date.append(y)
-            else:
-                
+        if len(final_date) == 0:
+            final_date.append(country_list[0])
+            final_date.append(release_date_list[0])
+        print(final_date)
+        movie_date = datetime.strptime(final_date[1], '%d %B %Y').date()
+        if movie_date < now.date():
+            print("The movie was realeased in " + final_date[0] + "on " + str(movie_date) + ".")
+        elif movie_date >= now.date():
+            print("The movie will realease in " + final_date[0] + "on " + str(movie_date) + ".")
+
         # print(movie_date)
         # print(country_list)
-        print(release_date_list)
+        # print(release_date_list)
         # print(moviedate.text)
         # movie_date = []
         # for x in moviedate.text.strip():
