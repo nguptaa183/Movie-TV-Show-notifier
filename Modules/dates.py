@@ -5,7 +5,6 @@ from datetime import datetime
 
 
 def dates(movie_or_tv_show):
-    
 
     #---------EXCEPTION HANDLING---------#
     try:
@@ -19,9 +18,11 @@ def dates(movie_or_tv_show):
             return BeautifulSoup(response.content, 'lxml')
 
         #---------GETTING TITLE ID OF TV SHOW FROM IMDB SEARCH---------#
-        imdb_home_page = getHTML("https://www.imdb.com/find?" + movie_or_tv_show)
+        imdb_home_page = getHTML(
+            "https://www.imdb.com/find?&q=" + movie_or_tv_show + "&s=all")
         find_show_id = imdb_home_page.findAll('td', class_='result_text')[0]
-        fetch_anchor_tag = find_show_id.find('a')  #--- movie_or_tv_show_name---#
+        fetch_anchor_tag = find_show_id.find(
+            'a')  # --- movie_or_tv_show_name---#
         fetch_link = fetch_anchor_tag['href']
         show_id = fetch_link[7:17]
 
@@ -96,7 +97,7 @@ def dates(movie_or_tv_show):
             country_list = [countrylist.text.strip()
                             for countrylist in movie_country]
             release_date_list = [releasedate.text.strip()
-                                for releasedate in movie_release_date]
+                                 for releasedate in movie_release_date]
             final_date = []
             if "India" in country_list:
                 x = country_list.index("India")
@@ -128,19 +129,13 @@ def dates(movie_or_tv_show):
             elif movie_date >= now.date():
                 return "Movie name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The movie will realease on " + final_date[1] + ".\n"
 
-
     #---------EXCEPTION---------#
     except Exception as e:
         print("\n        ERROR RETRIEVING DATA FROM IMDB\n")
         print(" ------------------------------------------------")
         print("|              POSSIBLE REASONS:                 |")
         print("| --> NO INTERNET CONNECTION                     |")
-        print("| --> ENTERED TV SHOW DOESNOT EXIST              |")
+        print("| --> ENTERED Movie or TV SHOW DOESNOT EXIST     |")
         print("| --> BAD RESPONSE FROM IMDB WHILE SCRAPING DATA |")
         print("| --> ABSENCE OF DATA AT THE MOMENT              |")
         print(" ------------------------------------------------")
-
-
-    
-
-

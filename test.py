@@ -19,7 +19,7 @@ def dates(movie_or_tv_show):
 
         #---------GETTING TITLE ID OF TV SHOW FROM IMDB SEARCH---------#
         imdb_home_page = getHTML(
-            "https://www.imdb.com/find?" + movie_or_tv_show)
+            "https://www.imdb.com/find?&q=" + movie_or_tv_show + "&s=all")
         find_show_id = imdb_home_page.findAll('td', class_='result_text')[0]
         fetch_anchor_tag = find_show_id.find(
             'a')  # --- movie_or_tv_show_name---#
@@ -147,6 +147,7 @@ def dates(movie_or_tv_show):
         print("| --> ABSENCE OF DATA AT THE MOMENT              |")
         print(" ------------------------------------------------")
 
+
 #---------USER INPUT---------#
-movie_or_tv_show = input("Enter Movie or TV Show: ").replace(' ', '_')
+movie_or_tv_show = input("Enter Movie or TV Show: ").replace(' ', '+')
 dates(movie_or_tv_show)
