@@ -3,25 +3,31 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+address= True
+while address:
+    toaddr = input("Enter your Email address: ")
+    if "@" and "." not in toaddr:
+        print("Enter correct address")
+        address = False
 
-# email_address = 'addicniku@gmail.com'
-movie_or_tv_show_list = ['lion', 'game of throne', 'suits', 'Captain Marvel']
+
+movie_or_tv_show_list = ['game of thrones']
+
 
 fromaddr = "ur.notifier.bot@gmail.com"
-toaddr = "addicniku@gmail.com"
+
 password = "fiernoti1"
-# for data in movie_or_tv_show_list:
-#     data = data.replace(' ', '_')
-#     msg=dates.dates(data)
-# msg ="TV series name: Suits"
+
 
 msg = MIMEMultipart()
 msg['From'] = fromaddr
 msg['To'] = toaddr
-msg['Subject'] = "Movie or TV shows dates"
+msg['Subject'] = "Movie or TV show dates"
 
-body = "Status: The show has finished streaming all its episodes of this year(2018)."
-msg.attach(MIMEText(body, 'plain'))
+for date in movie_or_tv_show_list:
+    date=date.replace(' ', '_')
+    body=dates.dates(date)
+    msg.attach(MIMEText(body, 'plain'))
 
 server = smtplib.SMTP('smtp.gmail.com', 587)
 server.starttls()
@@ -29,5 +35,4 @@ server.login(fromaddr, password)
 text = msg.as_string()
 server.sendmail(fromaddr, toaddr, text)
 server.quit()
-
 
