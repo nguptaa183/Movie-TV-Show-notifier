@@ -36,17 +36,17 @@ for date in movie_or_tv_show_list:
     body=dates.dates(date)
     msg.attach(MIMEText(body, 'plain'))
 
-# try:
-#     server = smtplib.SMTP('smtp.gmail.com', 587)
-#     server.starttls()
-#     server.login(fromaddr, password)
-#     text = msg.as_string()
-#     server.sendmail(fromaddr, toaddr, text)
-#     server.quit()
-#     print(" ----------------")
-#     print("| SUCCESS xD !!! |")
-#     print(" ----------------")
-# except Exception as e:
-#     print(" -----------------------------------")
-#     print("| BAD RESPONSE FROM MAIL SERVER !!! |")
-#     print(" -----------------------------------")
+try:
+    server = smtplib.SMTP('smtp.gmail.com', 587)
+    server.starttls()
+    server.login(fromaddr, password)
+    text = msg.as_string()
+    server.sendmail(fromaddr, toaddr, text)
+    server.quit()
+    print(" ----------------")
+    print("| SUCCESS xD !!! |")
+    print(" ----------------")
+except Exception as e:
+    print(" -----------------------------------")
+    print("| BAD RESPONSE FROM MAIL SERVER !!! |")
+    print(" -----------------------------------")
