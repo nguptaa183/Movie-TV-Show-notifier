@@ -87,5 +87,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * **Justin Yek** - *Beautiful [article](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe) on How to scrape websites with Python and BeautifulSoup* 
-* **Nael Shiab** - *Well explained article on How to send an email with Python* - [](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe)
+* **Nael Shiab** - *Well explained [article](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe) on How to send an email with Python* 
 * etc
