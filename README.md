@@ -28,7 +28,11 @@ First you should have [Python 3](https://docs.python.org/3.0/) installed in your
 
 After installing python 3 we need to again install all the necessary dependencies in order to run the script.
 
-'requirements.txt' contains all the necessary dependencies you need to run the script. To install all the dependencies at once you just need to install pip and run the following command:
+It's always recommended to use [Virtual Environment(virtualenv)](https://packaging.python.org/guides/installing-using-pip-and-virtualenv/) before installing dependencies as virtualenv allows you to manage separate package installations for different projects. It essentially allows you to create a “virtual” isolated Python installation and install packages into that virtual installation. One can easily install, create and activate virtualenv by following the link mentioned below :
+
+* [Virtual Environment(virtualenv)](https://packaging.python.org/guides/installing-using-pip-and-virtualenv/)
+
+After that you can install 'requirements.txt' as it contains all the necessary dependencies you need to run the script. To install all the dependencies at once you just need to install pip and run the following command:
 
 ```
 pip3 install requirements.txt
