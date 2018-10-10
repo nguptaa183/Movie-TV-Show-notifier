@@ -38,19 +38,17 @@ After that you can install 'requirements.txt' as it contains all the necessary d
 pip3 install requirements.txt
 ```
 
+It can also be installed manually one by one by running the following commands:
 Say what the step will be
 
 ```
-Give the example
+pip install requests==2.18.4
 ```
 
-And repeat
-
 ```
-until finished
+pip install beautifulsoup4==4.6.3
 ```
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
