@@ -1,4 +1,4 @@
-# Movie or TV Show notifier Script
+# Movie/TV Show notifier Script
 
 Who doesn’t love to watch Game of Thrones or black mirror, right? We all love to
 binge watch the newest TV Series or latest episodes of our favourite seasons all
@@ -6,6 +6,7 @@ over the weekend or on a lazy afternoon.
 However, we are so engaged in our work that we don’t have time to keep track of
 all our favourite seasons and their latest episodes’ air time. This leads to the worst
 nightmare a series buff can have.
+        This is when Movie/TV Show notifier Script becomes life savior. All you need is to run the script and provide your email address and list of Movie/TV Shows you want to get notified.
 
 ## Getting Started
 
