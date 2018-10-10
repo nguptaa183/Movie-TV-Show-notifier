@@ -86,6 +86,6 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* **Justin Yek** - *Beautiful [article](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe) on How to scrape websites with Python and BeautifulSoup* 
-* **Nael Shiab** - *Well explained [article](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe) on How to send an email with Python* 
-* etc
+* **Justin Yek** - *Beautiful [article](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe) on How to scrape websites with Python and BeautifulSoup.* 
+* **Nael Shiab** - *Well explained [article](https://medium.freecodecamp.org/how-to-scrape-websites-with-python-and-beautifulsoup-5946935d93fe) on How to send an email with Python.* 
+* **Steve Jobs — 'The only way to do great work is to love what you do. If you haven't found it yet, keep looking. Don't settle.'**
