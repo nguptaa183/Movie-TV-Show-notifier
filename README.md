@@ -64,9 +64,9 @@ Add additional notes about how to deploy this on a live system
 
 ## Built With
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+* [Requests](http://docs.python-requests.org/en/master/) - HTTP for Humans™
+* [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - A library for pulling data out of HTML and XML files.
+* [Datetime](https://docs.python.org/3/library/datetime.html) - Provides a number of function to deal with dates, times and time intervals.
  
 ## Authors
 
