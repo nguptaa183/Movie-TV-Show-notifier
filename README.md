@@ -14,15 +14,22 @@ First download the whole repository into your PC. Then all you need is to run th
 
 ### Prerequisites
 
+First you should have [Python 3]() installed in your PC. If it's not installed one can easily install it by typing following commands:
+
+* [Installing Python 3 on Mac OS X](https://docs.python-guide.org/starting/install3/osx/)
+* [Installing Python 3 on Linux](https://docs.python-guide.org/starting/install3/linux/)
+* [Installing Python 3 on Windows](https://docs.python-guide.org/starting/install3/win/)
+
+
+### Installing
+
+A step by step series of examples that tell you how to get a development env running
+
 requirements.txt contains all the necessary dependencies you need to run the script. To install all the dependencies at once you just need to install pip and run the following command:
 
 ```
 pip3 install requirements.txt
 ```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
 
 Say what the step will be
 
@@ -42,25 +49,6 @@ End with an example of getting some data out of the system or using it for a lit
 
 Explain how to run the automated tests for this system
 
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
