@@ -49,7 +49,7 @@ pip install requests==2.18.4
 pip install beautifulsoup4==4.6.3
 ```
 
-##Sample Input
+## Sample Input
 
 Enter your Email address: abc.123@xyz.com
 Enter Movie or TV show separated by comma(,): Game of thrones, suits, friends, gotham
@@ -58,7 +58,7 @@ Enter Movie or TV show separated by comma(,): Game of thrones, suits, friends, g
 
 After you enter the details just click Enter key and wait few seconds for the command line to display message as SUCCESS xD !!!
 
-##Sample Output
+## Sample Output
 
 Tv series name: Game of thrones
 Status: The next season begins in 2019.
