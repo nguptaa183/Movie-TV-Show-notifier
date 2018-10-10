@@ -45,27 +45,33 @@ def dates(movie_or_tv_show):
 
             #---------DISPLAYING STATUS OF SHOW---------#
             if int(show_year) < current_year:
-                return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The show has finished streaming all its episodes.\n"
+                return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The show has finished streaming all its episodes.\n" + "\n"
             elif (int(show_year) > current_year) and (int(show_year)-1 != int(show_last_year)):
-                return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next season begins in " + show_year + ".\n"
+                return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next season begins in " + show_year + ".\n" + "\n"
             elif (int(show_year) > current_year) and (int(show_year)-1 == int(show_last_year)):
                 imdb_episode_url = "https://www.imdb.com/title/" + \
                     show_id + "episodes?year=" + show_last_year
                 imdb_episode_page = getHTML(imdb_episode_url)
-                airdate = []
                 show_date = imdb_episode_page.findAll(class_='airdate')
+                episode_with_image = imdb_episode_page.findAll(
+                    class_='hover-over-image')
+                episode_without_image = imdb_episode_page.find(
+                    class_='no-ep-poster')
+                episode_without_image_index = episode_with_image.index(
+                    episode_without_image)
+                airdate = []
                 for ad in show_date:
                     ad = ad.text.strip()
                     if len(ad) != 4:
                         airdate.append(ad)
-                show_date = airdate[-1]
+                show_date = airdate[episode_without_image_index]
                 if '.' in show_date:
                     show_date = show_date.replace('.', '')
                 show_date = datetime.strptime(show_date, '%d %b %Y').date()
                 if show_date <= now.date():
-                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next season begins in " + show_year + ".\n"
+                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next season begins in " + show_year + ".\n" + "\n"
                 elif show_date > now.date():
-                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(show_date) + ".\n"
+                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(show_date) + ".\n" + "\n"
 
             elif int(show_year) == current_year:
                 imdb_episode_url = "https://www.imdb.com/title/" + \
@@ -82,9 +88,9 @@ def dates(movie_or_tv_show):
                     show_date = show_date.replace('.', '')
                 show_date = datetime.strptime(show_date, '%d %b %Y').date()
                 if show_date <= now.date():
-                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The show has finished streaming all its episodes of this year" + "(" + str(current_year) + ").\n"
+                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The show has finished streaming all its episodes of this year" + "(" + str(current_year) + ").\n" + "\n"
                 elif show_date > now.date():
-                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(show_date) + ".\n"
+                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(show_date) + ".\n" + "\n"
 
         else:
             #---------GETTING MOVIE RELEASE DATE FROM IMDB---------#
@@ -125,9 +131,9 @@ def dates(movie_or_tv_show):
 
             movie_date = datetime.strptime(final_date[1], '%d %B %Y').date()
             if movie_date < now.date():
-                return "Movie name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The movie was realeased on " + final_date[1] + ".\n"
+                return "Movie name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The movie was realeased on " + final_date[1] + ".\n" + "\n"
             elif movie_date >= now.date():
-                return "Movie name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The movie will realease on " + final_date[1] + ".\n"
+                return "Movie name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The movie will realease on " + final_date[1] + ".\n" + "\n"
 
     #---------EXCEPTION---------#
     except Exception as e:
