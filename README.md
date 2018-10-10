@@ -49,11 +49,28 @@ pip install requests==2.18.4
 pip install beautifulsoup4==4.6.3
 ```
 
+##Sample Input
+
+Enter your Email address: abc.123@xyz.com
+Enter Movie or TV show separated by comma(,): Game of thrones, suits, friends, gotham
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
+After you enter the details just click Enter key and wait few seconds for the command line to display message as SUCCESS xD !!!
 
+##Sample Output
+
+Tv series name: Game of thrones
+Status: The next season begins in 2019.
+
+Tv series name: Suits
+Status: The next episode airs on 2018-09-19.
+
+Tv series name: Friends
+Status: The show has finished streaming all its episodes.
+
+Tv series name: Gotham
+Status: The next season begins in 2019.
 
 ## Built With
 
