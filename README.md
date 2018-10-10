@@ -14,7 +14,7 @@ First download the whole repository into your PC. Then all you need is to run th
 
 ### Prerequisites
 
-First you should have [Python 3](https://docs.python.org/3.0/) installed in your PC. If it's not installed one can easily install it by typing following commands:
+First you should have [Python 3](https://docs.python.org/3.0/) installed in your PC. If it's not installed one can easily install it through following links:
 
 * [Installing Python 3 on Mac OS X](https://docs.python-guide.org/starting/install3/osx/)
 * [Installing Python 3 on Linux](https://docs.python-guide.org/starting/install3/linux/)
