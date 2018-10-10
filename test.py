@@ -76,26 +76,25 @@ def dates(movie_or_tv_show):
                 imdb_episode_url = "https://www.imdb.com/title/" + \
                     show_id + "episodes?year=" + show_year
                 imdb_episode_page = getHTML(imdb_episode_url)
-                airdate = []
                 show_date = imdb_episode_page.findAll(class_='airdate')
-                rate_or_not = imdb_episode_page.findAll(class_='ipl-rating-widget').find(class_='ipl-rating-star__rating')
-                print(rate_or_not)
-                for xx in rate_or_not:
-                    print(xx)
-                # for ad in show_date:
-                #     ad = ad.text.strip()
-                #     if len(ad) != 4:
-                #         airdate.append(ad)
-                # show_date = airdate[-1]
-                # if '.' in show_date:
-                #     show_date = show_date.replace('.', '')
-                # show_date = datetime.strptime(show_date, '%d %b %Y').date()
-                # if show_date <= now.date():
-                #     print("Status: The show has finished streaming all its episodes of this year" +
-                #           "(" + str(current_year) + ").\n")
-                # elif show_date > now.date():
-                #     print("Status: The next episode airs on " +
-                #           str(show_date) + ".\n")
+                episode_with_image = imdb_episode_page.findAll(
+                    class_='hover-over-image')
+                episode_without_image = imdb_episode_page.find(
+                    class_='no-ep-poster')
+                episode_without_image_index = episode_with_image.index(
+                    episode_without_image)
+                airdate = []
+                for ad in show_date:
+                    ad = ad.text.strip()
+                    if len(ad) != 4:
+                        airdate.append(ad)
+                show_date = datetime.strptime(show_date, '%d %b %Y').date()
+                if show_date <= now.date():
+                    print("Status: The show has finished streaming all its episodes of this year" +
+                          "(" + str(current_year) + ").\n")
+                elif show_date > now.date():
+                    print("Status: The next episode airs on " +
+                          str(show_date) + ".\n")
 
         else:
             print("Movie name: " + fetch_anchor_tag.text.strip())
