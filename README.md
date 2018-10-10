@@ -5,7 +5,10 @@ binge watch the newest TV Series or latest episodes of our favourite seasons all
 over the weekend or on a lazy afternoon.
 However, we are so engaged in our work that we don’t have time to keep track of
 all our favourite seasons and their latest episodes’ air time. This leads to the worst
-nightmare a series buff can have.  
+nightmare a series buff can have. 
+
+
+
 This is when Movie/TV Show notifier Script becomes life savior. It's written in python 3. All you need is to run the script, provide your email address and list of Movie/TV Shows you want to get notified.
 
 ## Getting Started
@@ -23,9 +26,9 @@ First you should have [Python 3](https://docs.python.org/3.0/) installed in your
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
+After installing python 3 we need to again install all the necessary dependencies in order to run the script.
 
-requirements.txt contains all the necessary dependencies you need to run the script. To install all the dependencies at once you just need to install pip and run the following command:
+'requirements.txt' contains all the necessary dependencies you need to run the script. To install all the dependencies at once you just need to install pip and run the following command:
 
 ```
 pip3 install requirements.txt
