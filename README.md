@@ -78,7 +78,7 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Authors
 
-* **Nikhil Gupta(https://github.com/nguptaa)**
+* **[Nikhil Gupta](https://github.com/nguptaa)**
 
 ## License
 
