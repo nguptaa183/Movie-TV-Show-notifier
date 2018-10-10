@@ -1,6 +1,11 @@
 # Movie or TV Show notifier Script
 
-One Paragraph of project description goes here
+Who doesn’t love to watch Game of Thrones or black mirror, right? We all love to
+binge watch the newest TV Series or latest episodes of our favourite seasons all
+over the weekend or on a lazy afternoon.
+However, we are so engaged in our work that we don’t have time to keep track of
+all our favourite seasons and their latest episodes’ air time. This leads to the worst
+nightmare a series buff can have.
 
 ## Getting Started
 
