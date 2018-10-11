@@ -51,7 +51,8 @@ pip install beautifulsoup4==4.6.3
 
 ## Sample Input
 
-Enter your Email address: abc.123@xyz.com
+Enter your Email address: abc.123@xyz.com  
+
 Enter Movie or TV show separated by comma(,): Game of thrones, suits, friends, gotham
 
 ## Running the tests
