@@ -61,16 +61,16 @@ After you enter the details just click Enter key and wait few seconds for the co
 
 ## Sample Output
 
-Tv series name: Game of thrones
+Tv series name: Game of thrones  
 Status: The next season begins in 2019.
 
-Tv series name: Suits
+Tv series name: Suits  
 Status: The next episode airs on 2018-09-19.
 
-Tv series name: Friends
+Tv series name: Friends  
 Status: The show has finished streaming all its episodes.
 
-Tv series name: Gotham
+Tv series name: Gotham  
 Status: The next season begins in 2019.
 
 ## Built With
