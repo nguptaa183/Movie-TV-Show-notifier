@@ -61,7 +61,7 @@ After you enter the details just click Enter key and wait few seconds for the co
 
 ## Sample Output
 
-Tv series name: Game of thrones  
+Tv series name: Game of Thrones  
 Status: The next season begins in 2019.
 
 Tv series name: Suits  
