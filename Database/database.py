@@ -1,49 +1,51 @@
 import sqlite3
-from sqlite3 import Error
+
+conn = sqlite3.connect('database.db')
+c = conn.cursor()
+
+a = 'fnsdf@jfl.com'
+b = ['a', 'b', 'c']
 
 
-def create_connection(db_file):
-    """ create a database connection to the SQLite database
-        specified by the db_file
-    :param db_file: database file
-    :return: Connection object or None
-    """
-    try:
-        conn = sqlite3.connect(db_file)
-        return conn
-    except Error as e:
-        print(e)
+def create_table():
+    c.execute('''CREATE TABLE DATAS
+         (email_id           VARCHAR(255)    NOT NULL,
+         movie_or_tvshow     VARCHAR(255)     NOT NULL);''')
 
-    return None
+# create_table()
 
+def insert():
+    for x in b:
+        c.execute('''INSERT INTO DATAS(email_id,movie_or_tvshow) VALUES(?,?)''', (a,x))
 
-def select_all_tasks(conn):
-    """
-    Query all rows in the tasks table
-    :param conn: the Connection object
-    :return:
-    """
-    cur = conn.cursor()
-    cur.execute("SELECT * FROM tasks")
+insert()
 
-    rows = cur.fetchall()
+email=[]
 
-    for row in rows:
-        print(row)
+ll=[]
+def retrieve():
+    c.execute('''SELECT email_id FROM DATAS''')
+    for row in c.fetchone():
+        email.append(row)
+    c.execute('''SELECT email_id,movie_or_tvshow FROM DATAS''')
+    for row in c.fetchall():
+        ll.append(row[1])
 
 
 
-
-def main():
-    database = "datebase.db"
-
-    # create a database connection
-    conn = create_connection(database)
-    with conn:
-
-        print("2. Query all tasks")
-        select_all_tasks(conn)
+# print(cursor.fetchone())
+retrieve()
 
 
-if __name__ == '__main__':
-    main()
+def drop_table():
+    c.execute('''DROP TABLE DATAS''')
+
+drop_table()
+
+
+
+conn.commit()
+conn.close()
+
+print(email[0])
+print(ll)
