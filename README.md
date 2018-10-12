@@ -82,7 +82,7 @@ Status: The next season begins in 2019.
 * [smtplib](https://docs.python.org/3/library/smtplib.html) - A protocol, which handles sending e-mail and routing e-mail between mail servers.
 * [email.mime](https://docs.python.org/3/library/email.mime.html) - An implementation of the abstract Multipart class that uses MIME conventions for the multipart data. 
 
-**I chose sqlite3 over MySQL SQLite3 as sqlite3 is very easy to use database engine. It is self-contained, serverless, zero-configuration and transactional. It is very fast and lightweight, and the entire database is stored in a single disk file.**
+**I chose sqlite3 over MySQL as sqlite3 is very easy to use database engine. It is self-contained, serverless, zero-configuration and transactional. It is very fast and lightweight, and the entire database is stored in a single disk file.**
 
 ## Authors
 
