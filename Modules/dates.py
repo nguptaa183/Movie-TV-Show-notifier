@@ -138,4 +138,5 @@ def dates(movie_or_tv_show):
         print("| --> ENTERED Movie or TV SHOW DOESNOT EXIST     |")
         print("| --> BAD RESPONSE FROM IMDB WHILE SCRAPING DATA |")
         print("| --> ABSENCE OF DATA AT THE MOMENT              |")
+        print("| --> BAD RESPONSE FROM MAIL SERVER !!!          |")
         print(" ------------------------------------------------")
