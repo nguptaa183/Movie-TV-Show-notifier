@@ -3,7 +3,6 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime
 
-
 def dates(movie_or_tv_show):
 
     #---------EXCEPTION HANDLING---------#
