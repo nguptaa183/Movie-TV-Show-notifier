@@ -48,7 +48,7 @@ pip install requests==2.18.4
 pip install beautifulsoup4==4.6.3
 ```
 
-**smtplib, sqlite3, email.mime.multipart, email.mime.multipart, email.mime.text** are other dependencies used in the script. Since these dependencies already comes built-in with python you don't need to install it separately.
+**smtplib, sqlite3, email.mime.multipart, email.mime.multipart, email.mime.text** are other dependencies used in the script. Since these dependencies already come built-in with python you don't need to install it separately.
 ## Sample Input
 
 Enter your Email address: abc.123@xyz.com  
