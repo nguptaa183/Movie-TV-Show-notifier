@@ -8,7 +8,6 @@ all our favourite seasons and their latest episodes’ air time. This leads to t
 nightmare a series buff can have. 
 
 
-
 This is when Movie/TV Show notifier Script becomes life savior. It's written in python 3. All you need is to run the script, provide your email address and list of Movie/TV Shows you want to get notified.
 
 ## Getting Started
