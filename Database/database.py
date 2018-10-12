@@ -12,7 +12,7 @@ def create_table():
          (email_id           VARCHAR(255)    NOT NULL,
          movie_or_tvshow     VARCHAR(255)     NOT NULL);''')
 
-# create_table()
+create_table()
 
 def insert():
     for x in b:
@@ -21,7 +21,6 @@ def insert():
 insert()
 
 email=[]
-
 ll=[]
 def retrieve():
     c.execute('''SELECT email_id FROM DATAS''')
@@ -31,18 +30,12 @@ def retrieve():
     for row in c.fetchall():
         ll.append(row[1])
 
-
-
-# print(cursor.fetchone())
 retrieve()
-
 
 def drop_table():
     c.execute('''DROP TABLE DATAS''')
 
 drop_table()
-
-
 
 conn.commit()
 conn.close()
