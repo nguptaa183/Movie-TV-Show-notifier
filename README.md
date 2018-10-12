@@ -78,6 +78,8 @@ Status: The next season begins in 2019.
 * [Requests](http://docs.python-requests.org/en/master/) - HTTP for Humans™
 * [BeautifulSoup](https://www.crummy.com/software/BeautifulSoup/bs4/doc/) - A library for pulling data out of HTML and XML files.
 * [Datetime](https://docs.python.org/3/library/datetime.html) - Provides a number of function to deal with dates, times and time intervals.
+* [sqlite3](https://docs.python.org/3/library/sqlite3.html) - A lightweight disk-based database that doesn’t require a separate server process and allows accessing the database using a nonstandard variant of the SQL query language.
+* [smtplib](https://docs.python.org/3/library/datetime.html) - Provides a number of function to deal with dates, times and time intervals.
  
 ## Authors
 
