@@ -80,12 +80,13 @@ msg['From'] = fromaddr
 msg['To'] = toaddr_from_db
 msg['Subject'] = "Movie or TV show dates"
 
-for date in movie_or_tv_show_list_from_db:
-    date=date.replace(' ', '+')
-    body=dates.dates(date)
-    msg.attach(MIMEText(body, 'plain'))
-
+#---------EXCEPTION HANDLING---------#
 try:
+    for date in movie_or_tv_show_list_from_db:
+        date=date.replace(' ', '+')
+        body=dates.dates(date)
+        msg.attach(MIMEText(body, 'plain'))
+
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.starttls()
     server.login(fromaddr, password)
@@ -95,7 +96,15 @@ try:
     print(" ----------------")
     print("| SUCCESS xD !!! |")
     print(" ----------------")
+
+#---------EXCEPTION---------#
 except Exception as e:
-    print(" -----------------------------------")
-    print("| BAD RESPONSE FROM MAIL SERVER !!! |")
-    print(" -----------------------------------")
+    print("\n        ERROR RETRIEVING DATA FROM IMDB\n")
+    print(" ------------------------------------------------")
+    print("|              POSSIBLE REASONS:                 |")
+    print("| --> NO INTERNET CONNECTION                     |")
+    print("| --> ENTERED Movie or TV SHOW DOESNOT EXIST     |")
+    print("| --> BAD RESPONSE FROM IMDB WHILE SCRAPING DATA |")
+    print("| --> ABSENCE OF DATA AT THE MOMENT              |")
+    print("| --> BAD RESPONSE FROM MAIL SERVER              |")
+    print(" ------------------------------------------------")
