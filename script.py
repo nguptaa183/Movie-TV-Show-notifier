@@ -34,27 +34,27 @@ c = conn.cursor()
 #--------------CREATE TABLE--------------#
 def create_table():
     c.execute('''CREATE TABLE DATAS
-         (email_id           VARCHAR(255)    NOT NULL,
-         movie_or_tvshow     VARCHAR(255)     NOT NULL);''')
+        (email_id           VARCHAR(255)    NOT NULL,
+        movie_or_tvshow     VARCHAR(255)     NOT NULL);''')
 
 create_table()
 
 #--------------INSERT DATA INTO TABLE--------------#
 def insert():
-    for x in movie_or_tv_show_list:
+    for movie_or_tv_show in movie_or_tv_show_list:
         c.execute(
-            '''INSERT INTO DATAS(email_id,movie_or_tvshow) VALUES(?,?)''', (toaddr, movie_or_tv_show_list))
+            '''INSERT INTO DATAS(email_id,movie_or_tvshow) VALUES(?,?)''', (toaddr, movie_or_tv_show))
 
 insert()
 
 #--------------RETRIEVE DATA FROM TABLE--------------#
-toaddr_from_db = []
+toaddr_from_db_list = []
 movie_or_tv_show_list_from_db = []
 
 def retrieve():
     c.execute('''SELECT email_id FROM DATAS''')
     for row in c.fetchone():
-        toaddr_from_db.append(row)
+        toaddr_from_db_list.append(row)
     c.execute('''SELECT email_id,movie_or_tvshow FROM DATAS''')
     for row in c.fetchall():
         movie_or_tv_show_list_from_db.append(row[1])
@@ -71,8 +71,7 @@ drop_table()
 conn.commit()
 conn.close()
 
-
-toaddr_from_db=toaddr_from_db[0]
+toaddr_from_db=toaddr_from_db_list[0]
 
 fromaddr = "ur.notifier.bot@gmail.com"
 password = "fiernoti1"

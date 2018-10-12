@@ -53,18 +53,12 @@ def dates(movie_or_tv_show):
                     show_id + "episodes?year=" + show_last_year
                 imdb_episode_page = getHTML(imdb_episode_url)
                 show_date = imdb_episode_page.findAll(class_='airdate')
-                episode_with_image = imdb_episode_page.findAll(
-                    class_='hover-over-image')
-                episode_without_image = imdb_episode_page.find(
-                    class_='no-ep-poster')
-                episode_without_image_index = episode_with_image.index(
-                    episode_without_image)
                 airdate = []
                 for ad in show_date:
                     ad = ad.text.strip()
                     if len(ad) != 4:
                         airdate.append(ad)
-                show_date = airdate[episode_without_image_index]
+                show_date = airdate[-1]
                 if '.' in show_date:
                     show_date = show_date.replace('.', '')
                 show_date = datetime.strptime(show_date, '%d %b %Y').date()
@@ -78,18 +72,12 @@ def dates(movie_or_tv_show):
                     show_id + "episodes?year=" + show_year
                 imdb_episode_page = getHTML(imdb_episode_url)
                 show_date = imdb_episode_page.findAll(class_='airdate')
-                episode_with_image = imdb_episode_page.findAll(
-                    class_='hover-over-image')
-                episode_without_image = imdb_episode_page.find(
-                    class_='no-ep-poster')
-                episode_without_image_index = episode_with_image.index(
-                    episode_without_image)
                 airdate = []
                 for ad in show_date:
                     ad = ad.text.strip()
                     if len(ad) != 4:
                         airdate.append(ad)
-                show_date = airdate[episode_without_image_index]
+                show_date = airdate[-1]
                 if '.' in show_date:
                     show_date = show_date.replace('.', '')
                 show_date = datetime.strptime(show_date, '%d %b %Y').date()

@@ -1,44 +1,83 @@
 import sqlite3
+# address = True
+# while address:
+#     toaddr = input("Enter your Email address: ").replace(' ', '')
+#     if "@" and "." not in toaddr:
+#         print(" ----------------------------------------")
+#         print("| PLEASE ENTER CORRECT EMAIL ADDRESS !!! |")
+#         print(" ----------------------------------------")
+#     else:
+#         address = False
 
-conn = sqlite3.connect('database.db')
+# mtvl = True
+# while mtvl:
+#     movie_or_tv_show_list = list(
+#         map(str, input("Enter Movie or TV show separated by comma(,): ").split(',')))
+#     if len(movie_or_tv_show_list) == 0:
+#         print(" -------------------------------------")
+#         print("| PLEASE ENTER A MOVIE OR TV SHOW !!! |")
+#         print(" -------------------------------------")
+#     else:
+#         mtvl = False
+
+toaddr='116cs0183@nitrkl.ac.in'
+movie_or_tv_show_list=['friends','suits']
+
+#-------------STORE USER ENTERED DATA IN DATABASE-------------#
+
+#-----------------DATABASE CONNECTION-----------------#
+conn = sqlite3.connect('Database/database.db')
 c = conn.cursor()
 
-a = 'fnsdf@jfl.com'
-b = ['a', 'b', 'c']
+#--------------CREATE TABLE--------------#
 
 
 def create_table():
     c.execute('''CREATE TABLE DATAS
-         (email_id           VARCHAR(255)    NOT NULL,
-         movie_or_tvshow     VARCHAR(255)     NOT NULL);''')
+        (email_id           VARCHAR(255)    NOT NULL,
+        movie_or_tvshow     VARCHAR(255)     NOT NULL);''')
 
 create_table()
 
+#--------------INSERT DATA INTO TABLE--------------#
+
+
 def insert():
-    for x in b:
-        c.execute('''INSERT INTO DATAS(email_id,movie_or_tvshow) VALUES(?,?)''', (a,x))
+    for movie_or_tv_show in movie_or_tv_show_list:
+        c.execute(
+            '''INSERT INTO DATAS(email_id,movie_or_tvshow) VALUES(?,?)''', (toaddr, movie_or_tv_show))
+
 
 insert()
 
-email=[]
-ll=[]
+#--------------RETRIEVE DATA FROM TABLE--------------#
+toaddr_from_db_list = []
+movie_or_tv_show_list_from_db = []
+
+
 def retrieve():
     c.execute('''SELECT email_id FROM DATAS''')
     for row in c.fetchone():
-        email.append(row)
+        toaddr_from_db_list.append(row)
     c.execute('''SELECT email_id,movie_or_tvshow FROM DATAS''')
     for row in c.fetchall():
-        ll.append(row[1])
+        movie_or_tv_show_list_from_db.append(row[1])
+
 
 retrieve()
+
+#--------------DELETE THE CREATED TABLE AFTER RETRIEVING DATA--------------#
+
 
 def drop_table():
     c.execute('''DROP TABLE DATAS''')
 
 drop_table()
 
+#--------------COMMIT AND CLOSE THE DATABASE CONNECTION--------------#
 conn.commit()
 conn.close()
 
-print(email[0])
-print(ll)
+toaddr_from_db = toaddr_from_db_list[0]
+print(toaddr_from_db)
+print(movie_or_tv_show_list_from_db)
