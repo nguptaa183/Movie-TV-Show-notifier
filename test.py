@@ -59,7 +59,7 @@ def dates(movie_or_tv_show):
                     ad = ad.text.strip()
                     if len(ad) != 4:
                         airdate.append(ad)
-                show_date = airdate[-1]]
+                show_date = airdate[-1]
                 if '.' in show_date:
                     show_date = show_date.replace('.', '')
                 show_date = datetime.strptime(show_date, '%d %b %Y').date()

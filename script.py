@@ -97,6 +97,4 @@ try:
     print(" ----------------")
 
 except Exception as e:
-    print(" -----------------------------------")
-    print("| BAD RESPONSE FROM MAIL SERVER !!! |")
-    print(" -----------------------------------")
+    pass
