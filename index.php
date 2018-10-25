@@ -1,1 +1,2 @@
-<?php include "Homepage/home.html" ?>
+
+<?php header('Location: Homepage/index.html'); ?>
