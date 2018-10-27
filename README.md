@@ -1,6 +1,6 @@
 # Movie/TV Show notifier Script
 
-Who doesn’t love to watch Game of Thrones or black mirror, right? We all love to
+Who doesn’t love to watch Game of Thrones or black mirror or keen to know the movie release date, right? We all love to
 binge watch the newest TV Series or latest episodes of our favourite seasons all
 over the weekend or on a lazy afternoon.
 However, we are so engaged in our work that we don’t have time to keep track of
