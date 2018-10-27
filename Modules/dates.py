@@ -64,7 +64,16 @@ def dates(movie_or_tv_show):
                 show_date = datetime.strptime(show_date, '%d %b %Y').date()
                 if show_date <= now.date():
                     return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next season begins in " + show_year + ".\n" + "\n"
-                elif show_date > now.date():
+                else:
+                    airdate2 = []
+                    for ad2 in airdate:
+                        if '.' in ad2:
+                            ad2 = ad2.replace('.', '')
+                        ad2 = datetime.strptime(ad2, '%d %b %Y').date()
+                        if ad2 > now.date():
+                            airdate2.append(ad2)
+                            break
+
                     return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(show_date) + ".\n" + "\n"
 
             elif int(show_year) == current_year:
