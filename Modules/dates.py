@@ -40,7 +40,8 @@ def dates(movie_or_tv_show):
                 if len(year) == 4:
                     show_years.append(year)
             show_year = show_years[0]
-            show_last_year = show_years[1]
+            if len(show_years) > 1:
+                show_last_year = show_years[1]
 
             #---------DISPLAYING STATUS OF SHOW---------#
             if int(show_year) < current_year:
