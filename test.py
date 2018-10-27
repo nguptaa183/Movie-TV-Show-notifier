@@ -40,8 +40,10 @@ def dates(movie_or_tv_show):
                 year = year.text.strip()
                 if len(year) == 4:
                     show_years.append(year)
+
             show_year = show_years[0]
-            show_last_year = show_years[1]
+            if len(show_years) > 1:
+                show_last_year = show_years[1]
 
             #---------DISPLAYING STATUS OF SHOW---------#
             if int(show_year) < current_year:
@@ -58,15 +60,22 @@ def dates(movie_or_tv_show):
                     ad = ad.text.strip()
                     if len(ad) != 4:
                         airdate.append(ad)
-                show_date = airdate[-1]
-                if '.' in show_date:
-                    show_date = show_date.replace('.', '')
-                show_date = datetime.strptime(show_date, '%d %b %Y').date()
-                if show_date <= now.date():
+                show_date_next_season = airdate[-1]
+                if '.' in show_date_next_season:
+                    show_date_next_season = show_date_next_season.replace('.', '')
+                show_date_next_season = datetime.strptime(show_date_next_season, '%d %b %Y').date()
+                if show_date_next_season <= now.date():
                     print("Status: The next season begins in " + show_year + ".\n")
-                elif show_date > now.date():
-                    print("Status: The next episode airs on " +
-                          str(show_date) + ".\n")
+                else:
+                    airdate2=[]
+                    for ad2 in airdate:
+                        if '.' in ad2:
+                            ad2 = ad2.replace('.', '')
+                        ad2=datetime.strptime(ad2, '%d %b %Y').date()
+                        if ad2 > now.date():
+                            airdate2.append(ad2)
+                            break
+                    print("Status: The next episode airs on " + str(airdate2[0]) + ".\n")
 
             elif int(show_year) == current_year:
                 imdb_episode_url = "https://www.imdb.com/title/" + \
