@@ -73,8 +73,7 @@ def dates(movie_or_tv_show):
                         if ad2 > now.date():
                             airdate2.append(ad2)
                             break
-
-                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(show_date) + ".\n" + "\n"
+                    return "TV series name: " + fetch_anchor_tag.text.strip() + "\n" + "Status: The next episode airs on " + str(airdate2[0]) + ".\n" + "\n"
 
             elif int(show_year) == current_year:
                 imdb_episode_url = "https://www.imdb.com/title/" + \
