@@ -56,7 +56,7 @@ Enter Movie or TV show separated by comma(,): Game of thrones, suits, friends, g
 
 ## Running the tests
 
-After you enter the details just click Enter key and wait few seconds for the command line to display message as  
+After you enter the details just click Enter key and wait few seconds for the command line to display message as:  
 **------------------**  
 **| SUCCESS xD !!! |**  
 **------------------**
