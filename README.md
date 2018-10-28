@@ -12,7 +12,7 @@ This is when Movie/TV Show notifier Script becomes life savior. It's written in 
 
 ## Getting Started
 
-First download the whole repository into your PC. Then all you need is to run the script, provide your email address and list of Movie/TV Shows you want to get notified.
+First download the whole repository into your PC. Then all you need is to run the python program **script.py** , provide your email address and list of Movie/TV Shows you want to get notified.
 
 ### Prerequisites
 
@@ -56,7 +56,7 @@ Enter Movie or TV show separated by comma(,): Game of thrones, suits, friends, g
 
 ## Running the tests
 
-After you enter the details just click Enter key and wait few seconds for the command line to display message as SUCCESS xD !!!
+After you enter the details just click Enter key and wait few seconds for the command line to display message as **SUCCESS xD !!!**
 
 ## Sample Output
 
