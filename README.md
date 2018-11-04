@@ -75,6 +75,10 @@ Status: The show has finished streaming all its episodes.
 Tv series name: Gotham  
 Status: The next season begins in 2019.
 
+##Email Received Image
+
+![alt text](Images/Email_Output.png)
+
 ## Built With
 
 * [Requests](http://docs.python-requests.org/en/master/) - HTTP for Humans™
