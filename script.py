@@ -73,8 +73,8 @@ conn.close()
 
 toaddr_from_db=toaddr_from_db_list[0]
 
-fromaddr = "ur.notifier.bot@gmail.com"
-password = "fiernoti1"
+fromaddr = "Your Email Address"
+password = "Your Email Password"
 msg = MIMEMultipart()
 msg['From'] = fromaddr
 msg['To'] = toaddr_from_db
